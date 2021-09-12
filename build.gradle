@@ -12,6 +12,7 @@ buildscript {
         classpath Libraries.navigationSafeArgs
         classpath Libraries.googleService
         classpath FirebaseLibraries.firebaseCraslytics
+        classpath TestLibraries.karumiShot
     }
 }
 
