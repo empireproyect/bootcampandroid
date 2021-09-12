@@ -1,0 +1,111 @@
+buildscript {
+    apply from: '../dependencies.gradle'
+}
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "app.company.sportpop"
+        minSdkVersion rootProject.ext.minVersion
+        targetSdkVersion rootProject.ext.targetVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "app.company.sportpop.HiltTestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation Libraries.kotlinStLib
+    implementation Libraries.coreKtx
+    implementation Libraries.playServicesMap
+    implementation Libraries.appcompat
+    implementation Libraries.recyclerview
+    implementation Libraries.material
+    implementation Libraries.coordinatorlayout
+    implementation Libraries.constraintlayout
+    implementation Libraries.lifecycleExtensions
+    implementation Libraries.viewmodelKtx
+    implementation Libraries.livedataKtx
+    implementation Libraries.runtimeKtx
+    implementation Libraries.navigationUI
+    implementation Libraries.navigationFragment
+    implementation Libraries.coroutinesServices
+    implementation Libraries.alert
+
+    // Firebase
+    implementation FirebaseLibraries.firestore
+    implementation FirebaseLibraries.firebaseStore
+    implementation FirebaseLibraries.firebaseAuth
+    implementation FirebaseLibraries.crashlytics
+    implementation FirebaseLibraries.anlyitics
+
+    // DI
+    implementation DaggerHiltLibraries.hiltAndroid
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt DaggerHiltLibraries.hiltAndroidCompiler
+    implementation DaggerHiltLibraries.hiltAndroid
+    implementation DaggerHiltLibraries.lifecycle
+    kapt DaggerHiltLibraries.hiltCommon
+    kapt DaggerHiltLibraries.hiltCompiler
+
+    // DB
+    implementation Libraries.roomRuntime
+    kapt Libraries.roomCompiler
+
+    // Image
+    implementation Libraries.picasso
+
+
+    // Testing
+    testImplementation TestLibraries.junit
+    androidTestImplementation TestLibraries.junitExt
+    testImplementation TestLibraries.espressoCore
+    androidTestImplementation TestLibraries.espressoCore
+    androidTestImplementation TestLibraries.espressoContrib
+    androidTestImplementation TestLibraries.coreKtxTesting
+    testImplementation TestLibraries.mockk
+    testImplementation TestLibraries.coreTesting
+    testImplementation TestLibraries.kotlinxCoroutines
+    testImplementation TestLibraries.hiltAndroidTesting
+    kaptTest TestLibraries.hiltAndroidCompiler
+    androidTestImplementation TestLibraries.hiltAndroidTesting
+    kaptAndroidTest TestLibraries.hiltAndroidCompiler
+}

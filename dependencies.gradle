@@ -1,0 +1,112 @@
+ext {
+    targetVersion = 30
+    compileVersion = 30
+    minVersion = 21
+    versionCode = 1
+    versionName = "1.0"
+    buildToolsVersion = "30.0.3"
+
+    kotlinVersion = "1.5.10"
+    gradleVersion = "4.2.1"
+    coreKtxVersion = '1.5.0'
+    navigationVersion = '2.3.5'
+    androidxVersion = '1.2.1'
+    appCompatVersion = '1.3.0'
+    materialVersion = '1.3.0'
+    constraintlayoutVersion = "2.0.4"
+    picassoVersion = "2.71828"
+    archLifecycleVersion = '2.3.1'
+    playServicesMapVersion = '17.0.1'
+    roomVersion = '2.3.0'
+    coordinatorlayoutVersion = '1.1.0'
+    lifecycleExtensionsVersion = '2.2.0'
+    googleServiceVersion = '4.3.5'
+    coroutinesServicesVersion = '1.1.1'
+    alertVersion = "7.0.0"
+
+    Libraries = [
+            gradle             : "com.android.tools.build:gradle:$gradleVersion",
+            kotlinGradlePlugin : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+            kotlinStLib        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            playServicesMap    : "com.google.android.gms:play-services-maps:$playServicesMapVersion",
+            appcompat          : "androidx.appcompat:appcompat:$appCompatVersion",
+            material           : "com.google.android.material:material:$materialVersion",
+            coordinatorlayout  : "androidx.coordinatorlayout:coordinatorlayout:$coordinatorlayoutVersion",
+            recyclerview       : "androidx.recyclerview:recyclerview:$androidxVersion",
+            constraintlayout   : "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion",
+            coreKtx            : "androidx.core:core-ktx:$coreKtxVersion",
+            lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion",
+            viewmodelKtx       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion",
+            livedataKtx        : "androidx.lifecycle:lifecycle-livedata-ktx:$archLifecycleVersion",
+            runtimeKtx         : "androidx.lifecycle:lifecycle-runtime-ktx:$archLifecycleVersion",
+            navigationUI       : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+            navigationFragment : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+            navigationSafeArgs : "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion",
+            picasso            : "com.squareup.picasso:picasso:$picassoVersion",
+            roomRuntime        : "androidx.room:room-runtime:$roomVersion",
+            roomCompiler       : "androidx.room:room-compiler:$roomVersion",
+            roomKtx            : "androidx.room:room-ktx:$roomVersion",
+            googleService      : "com.google.gms:google-services:$googleServiceVersion",
+            coroutinesServices : "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesServicesVersion",
+            alert              : "com.tapadoo.android:alerter:$alertVersion"
+
+    ]
+
+    firebaseCraslyticsVersion = '2.5.2'
+    firestoreVersion = '22.0.1'
+    firebaseStorageVersion = '19.2.1'
+    firebaseAuthVersion = '20.0.2'
+    crashlyticsVersion = '17.4.1'
+    analyticsVersion = '18.0.2'
+
+    FirebaseLibraries = [
+            firebaseCraslytics: "com.google.firebase:firebase-crashlytics-gradle:$firebaseCraslyticsVersion",
+            firestore         : "com.google.firebase:firebase-firestore:$firestoreVersion",
+            firebaseStore     : "com.google.firebase:firebase-storage:$firebaseStorageVersion",
+            firebaseAuth      : "com.google.firebase:firebase-auth:$firebaseAuthVersion",
+            crashlytics       : "com.google.firebase:firebase-crashlytics-ktx:$crashlyticsVersion",
+            anlyitics         : "com.google.firebase:firebase-analytics-ktx:$analyticsVersion",
+    ]
+
+    dagger = "2.29.1"
+    daggerHiltAndroid = '2.36'
+    daggerHiltVersion = '1.0.0-alpha03'
+
+    DaggerHiltLibraries = [
+            dagger             : "com.google.dagger:dagger:$dagger",
+            hiltAndroid        : "com.google.dagger:hilt-android:$daggerHiltAndroid",
+            hiltCompiler       : "androidx.hilt:hilt-compiler:$daggerHiltVersion",
+            daggerCompiler     : "com.google.dagger:dagger-compiler:$dagger",
+            hiltAndroidCompiler: "com.google.dagger:hilt-android-compiler:$daggerHiltAndroid",
+            hiltPlugin         : "com.google.dagger:hilt-android-gradle-plugin:$daggerHiltAndroid",
+            hiltCommon         : "androidx.hilt:hilt-common:$daggerHiltVersion",
+            lifecycle          : "androidx.hilt:hilt-lifecycle-viewmodel:$daggerHiltVersion"
+    ]
+
+    junit = '4.13.2'
+    junitExt = "1.1.2"
+    espresso = "3.3.0"
+    coreTesting = "2.1.0"
+    kotlinxCoroutines = '1.5.0-native-mt'
+    robolectric = "4.3"
+    robolectricShadow = "3.3.2"
+    mockkVersion = "1.11.0"
+    coreKtxTestVersion = "1.3.0"
+
+    TestLibraries = [
+            junit              : "junit:junit:$junit",
+            junitExt           : "androidx.test.ext:junit:$junitExt",
+            espressoCore       : "androidx.test.espresso:espresso-core:$espresso",
+            espressoContrib    : "androidx.test.espresso:espresso-contrib:$espresso",
+            coreKtxTesting     : "androidx.test:core-ktx:$coreKtxTestVersion",
+            coreTesting        : "androidx.arch.core:core-testing:$coreTesting",
+            kotlinxCoroutines  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinxCoroutines",
+            robolectric        : "org.robolectric:robolectric:$robolectric",
+            robolectricPlay    : "org.robolectric:shadows-play-services:$robolectricShadow",
+            robolectricSupport : "org.robolectric:shadows-support-v4:$robolectricShadow",
+            hiltAndroidTesting : "com.google.dagger:hilt-android-testing:$daggerHiltAndroid",
+            hiltAndroidCompiler: "com.google.dagger:hilt-android-compiler:$daggerHiltAndroid",
+            hiltCompiler       : "androidx.hilt:hilt-compiler:$daggerHiltAndroid",
+            mockk              : "io.mockk:mockk:$mockkVersion",
+    ]
+}

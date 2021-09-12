@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">SportPop</string>
+    <string name="not_internet_available">Not internet available</string>
+    <string name="failure_network_connection">No Internet connection available..</string>
+    <string name="failure_fatal_error">Sorry, something went wrong. Please try again later or contact support.</string>
+    <string name="failure_recoverable_error">Sorry, please try again.</string>
+    <string name="failure_no_connection">Please, check your connection and try again.</string>
+    <string name="info_no_data_available">Sorry, there is no data available.</string>
+    <string name="credentials_invalid">Credentials invalid</string>
+    <string name="user_invalid">user already registered with these data</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error">Error</string>
+    <string name="email_not_valid">The email not is valid</string>
+    <string name="password_not_valid">The password not is valid</string>
+    <string name="display_name_not_valid">The name cannot be empty</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+</resources>
