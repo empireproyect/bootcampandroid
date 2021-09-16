@@ -14,6 +14,7 @@ import com.tapadoo.alerter.Alerter
 import java.util.regex.Pattern
 
 const val PASSWORD_PATTERN = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$"
+const val EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
 
 fun Fragment.hideKeyboard(activity: Activity) {
     val inputManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager?
@@ -47,5 +48,4 @@ fun Activity.alert(title: String, description: String, color: Int) {
 }
 
 fun CharSequence?.isValidPassword() = !isNullOrEmpty() && Pattern.compile(PASSWORD_PATTERN).matcher(this).matches()
-
-fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Pattern.compile(EMAIL_PATTERN).matcher(this).matches()
