@@ -11,13 +11,15 @@ import app.company.sportpop.data.source.RemoteDataSource
 import app.company.sportpop.domain.repository.Repository
 import app.company.sportpop.domain.use_case.auth.LoginUseCase
 import app.company.sportpop.domain.use_case.auth.RegisterUseCase
+import app.company.sportpop.domain.use_case.main.HomeUseCase
 import app.company.sportpop.framework.local.room.RoomDataSource
-import app.company.sportpop.framework.local.room.base.RoomDao
 import app.company.sportpop.framework.local.room.base.ConfigDatabase
+import app.company.sportpop.framework.local.room.base.RoomDao
 import app.company.sportpop.framework.remote.NetworkApi
 import app.company.sportpop.framework.remote.RemoteDataSourceImpl
 import app.company.sportpop.framework.remote.firebase.FirebaseRepository
 import app.company.sportpop.framework.remote.firebase.mapper.FirebaseUserMapperUserJson
+import app.company.sportpop.framework.remote.mapper.ProductJsonToMapperProduct
 import app.company.sportpop.framework.remote.mapper.UserJsonToMapperUser
 import dagger.Module
 import dagger.Provides
@@ -55,6 +57,10 @@ class MappersModule {
     @Provides
     @Singleton
     fun userJsonMapper(): UserJsonToMapperUser = UserJsonToMapperUser()
+
+    @Provides
+    @Singleton
+    fun productJsonMapper(): ProductJsonToMapperProduct = ProductJsonToMapperProduct()
 }
 
 @Module
@@ -62,7 +68,11 @@ class MappersModule {
 class DataModule {
     @Provides
     @Singleton
-    fun repositoryProvider(remoteDataSource: RemoteDataSource, localDataSource: LocalDataSource, connectivityProvider: ConnectivityProvider): Repository =
+    fun repositoryProvider(
+        remoteDataSource: RemoteDataSource,
+        localDataSource: LocalDataSource,
+        connectivityProvider: ConnectivityProvider
+    ): Repository =
         RepositoryIml(remoteDataSource, localDataSource, connectivityProvider)
 }
 
@@ -76,6 +86,10 @@ class UseCasesModule {
     @Provides
     @Singleton
     fun registerUseCaseProvider(repository: Repository): RegisterUseCase = RegisterUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun homeUseCaseProvider(repository: Repository): HomeUseCase = HomeUseCase(repository)
 }
 
 @Module
@@ -83,8 +97,12 @@ class UseCasesModule {
 object FrameworkModule {
     @Provides
     @Singleton
-    fun remoteDataSourceProvider(networkApi: NetworkApi, mapper: UserJsonToMapperUser): RemoteDataSource =
-        RemoteDataSourceImpl(networkApi, mapper)
+    fun remoteDataSourceProvider(
+        networkApi: NetworkApi,
+        mapperUser: UserJsonToMapperUser,
+        mapperProduct: ProductJsonToMapperProduct
+    ): RemoteDataSource =
+        RemoteDataSourceImpl(networkApi, mapperUser, mapperProduct)
 
     @Provides
     @Singleton

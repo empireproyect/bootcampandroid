@@ -8,6 +8,7 @@ import app.company.sportpop.core.functional.Either
 import app.company.sportpop.core.functional.getOrElse
 import app.company.sportpop.data.source.LocalDataSource
 import app.company.sportpop.data.source.RemoteDataSource
+import app.company.sportpop.domain.entities.Product
 import app.company.sportpop.domain.entities.User
 import app.company.sportpop.domain.repository.Repository
 import java.lang.Exception
@@ -44,5 +45,9 @@ class RepositoryIml @Inject constructor(
         } else {
             Either.Left(NoConnection)
         }
+    }
+
+    override suspend fun getProducts(): Either<Failure, List<Product>> {
+        return remoteDataSource.getProducts()
     }
 }

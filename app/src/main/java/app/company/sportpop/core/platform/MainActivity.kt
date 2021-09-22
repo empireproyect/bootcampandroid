@@ -45,6 +45,10 @@ class MainActivity : AppCompatActivity(),
         changeNavigation()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
     private fun changeNavigation() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when(destination.id) {
@@ -56,12 +60,16 @@ class MainActivity : AppCompatActivity(),
 
     fun showToolbar() = supportActionBar?.show()
     fun hideToolbar() = supportActionBar?.hide()
+    fun hideNavigation() = binding.bottomNavigationView.hide()
+    fun showNavigation() = binding.bottomNavigationView.show()
 
     override fun onStateChange(state: ConnectivityProvider.NetworkState) {
         if (!state.isNetworkAvailable()) {
             this.alert(getString(R.string.error), getString(R.string.not_internet_available), R.color.yellow)
         }
     }
+
+
 
     override fun onStart() {
         super.onStart()

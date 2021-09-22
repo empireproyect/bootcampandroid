@@ -4,14 +4,17 @@ import app.company.sportpop.R
 import app.company.sportpop.framework.remote.NetworkApi
 import app.company.sportpop.framework.remote.Response
 import app.company.sportpop.framework.remote.firebase.mapper.FirebaseUserMapperUserJson
+import app.company.sportpop.framework.remote.model.ProductJson
 import app.company.sportpop.framework.remote.model.UserJson
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 import javax.inject.Inject
 
 data class User(val email: String = "", val displayName: String = "", val photo_url: String = "")
@@ -41,6 +44,37 @@ class FirebaseRepository @Inject constructor(
             e.printStackTrace()
             responseUserError(ErrorNetwork(R.string.user_invalid, TypeError.Auth))
         }
+    }
+
+
+    override suspend fun getProducts(): Response<List<ProductJson>> = withContext(Dispatchers.IO) {
+        val products = mutableListOf<ProductJson>()
+        try {
+            val resultSnapshot = FirebaseFirestore.getInstance().collection("products").get().await()
+            for (product in resultSnapshot.documents) {
+                product.toObject(ProductJson::class.java)?.let {
+                    products.add(it)
+                }
+            }
+            responseProducts(products)
+        } catch (e: Exception) {
+            responseProductsError(ErrorNetwork(R.string.user_invalid, TypeError.Firestore))
+        }
+    }
+
+    private  fun responseProducts(products: List<ProductJson>): Response<List<ProductJson>> {
+        return Response(
+            isSuccessful = true,
+            body = products
+        )
+    }
+
+    private fun responseProductsError(errorFirebase: ErrorNetwork): Response<List<ProductJson>> {
+        return Response(
+            isSuccessful = false,
+            body = null,
+            error = errorFirebase
+        )
     }
 
     private fun responseUserError(errorFirebase: ErrorNetwork): Response<UserJson> {

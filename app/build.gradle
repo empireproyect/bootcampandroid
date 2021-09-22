@@ -80,6 +80,7 @@ dependencies {
 
     // DI
     implementation DaggerHiltLibraries.hiltAndroid
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt DaggerHiltLibraries.hiltAndroidCompiler
     implementation DaggerHiltLibraries.hiltAndroid
     kapt DaggerHiltLibraries.hiltCommon

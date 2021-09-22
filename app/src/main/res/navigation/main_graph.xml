@@ -15,7 +15,19 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@+id/main_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_homeDetailFragment"
+            app:destination="@id/homeDetailFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            app:popUpToInclusive="false"/>
     </fragment>
+    <fragment
+        android:id="@+id/homeDetailFragment"
+        android:name="app.company.sportpop.presentation.main.home.HomeDetailFragment"
+        android:label="Detail" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="app.company.sportpop.presentation.main.profile.ProfileFragment"

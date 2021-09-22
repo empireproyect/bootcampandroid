@@ -27,5 +27,8 @@ abstract class BaseFragment : Fragment() {
 
     fun hideToolbar() = (requireActivity() as MainActivity).hideToolbar()
 
+    fun hideNavigation() = (requireActivity() as MainActivity).hideNavigation()
+
+    fun showNavigation() = (requireActivity() as MainActivity).showNavigation()
 
 }
