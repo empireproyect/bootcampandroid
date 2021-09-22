@@ -3,14 +3,16 @@
     package="app.company.sportpop">
 
     <application
-        android:allowBackup="true"
         android:name="app.company.sportpop.AndroidApplication"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sportpop">
-        <activity android:name="app.company.sportpop.core.platform.MainActivity" >
+        <activity
+            android:name="app.company.sportpop.core.platform.MainActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -14,9 +14,9 @@
     <string name="password_not_valid">The password not is valid</string>
     <string name="display_name_not_valid">The name cannot be empty</string>
     <string name="name">Name</string>
-    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="email">Email</string>
 </resources>
